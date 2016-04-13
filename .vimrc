@@ -38,6 +38,7 @@ set noeb vb t_vb=
 " map <F3> <Esc>:call matchdelete(_0001)<CR>:unlet _0001<CR>:call matchdelete(_0002)<CR>:unlet _0002<CR>:call matchdelete(_0003)<CR>:unlet _0003<CR><Esc>
 
 map <F2> <Esc>:tabnew %<CR>gT <C-o>gt
+map <F3> <Esc>:set syntax=c<CR>
 
 " Load session, "cp -b ~/.gvim_sess.backup ~/.gvim_sess" if you meant to
 " hit <F5>
@@ -89,10 +90,15 @@ nnoremap \rq :silent! normal mpeld bhd `ph<CR><Esc><Esc>
 " Alternate escape
 inoremap jj <ESC>
 
+" Map Ctrl+y and Ctrl+p to yank to, and paste from the system clip-board
+nnoremap <S-C-y> "+y
+vnoremap <S-C-y> "+y
+nnoremap <S-C-p> "+p
+vnoremap <S-C-p> "+p
 
 "colorscheme morning
-"colorscheme desert
-colorscheme evening
+colorscheme desert
+"colorscheme evening
 syntax enable
 
 " Look for ctags here, and search upward.
@@ -141,3 +147,4 @@ nnoremap <leader>c :copen 20<CR>
 nnoremap <leader>C :cclose<CR>
 nnoremap <leader><TAB> <C-w><C-w>
 nnoremap <leader>y :cd %:p:h<CR>
+nnoremap <leader>r :e<CR>
