@@ -1,6 +1,7 @@
 "set bg=light
 " Show line numbers
 set number
+set relativenumber
 set ts=4
 set sw=4
 " Tabs expanded to spaces
@@ -31,6 +32,63 @@ set colorcolumn=80
 set list lcs=tab:»\ ,trail:°
 " set no bell
 set noeb vb t_vb=
+
+" ========================
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" fuzzy search
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
+" Motion on speed
+Plugin 'easymotion/vim-easymotion'
+
+" Preview replace
+Plugin 'osyo-manga/vim-over'
+
+" "" " The following are examples of different formats supported.
+" "" " Keep Plugin commands between vundle#begin/end.
+" "" " plugin on GitHub repo
+" "" Plugin 'tpope/vim-fugitive'
+" "" " plugin from http://vim-scripts.org/vim/scripts.html
+" "" Plugin 'L9'
+" "" " Git plugin not hosted on GitHub
+" "" Plugin 'git://git.wincent.com/command-t.git'
+" "" " git repos on your local machine (i.e. when working on your own plugin)
+" "" Plugin 'file:///home/gmarik/path/to/plugin'
+" "" " The sparkup vim script is in a subdirectory of this repo called vim.
+" "" " Pass the path to set the runtimepath properly.
+" "" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" "" " Install L9 and avoid a Naming conflict if you've already installed a
+" "" " different version somewhere else.
+" "" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+" ========================
+
 
 " Match all whitespace, tabs, and over eighty
 " map <F2> <Esc>:highlight WhiteSpace ctermbg=green guibg=green<CR>:highlight Tab ctermbg=blue guibg=blue<CR>:highlight OverEighty ctermbg=blue guibg=blue<CR>:if exists("_0001")<CR>:call matchdelete(_0001)<CR>:unlet _0001<CR>:endif<CR>:if exists("_0002")<CR>:call matchdelete(_0002)<CR>:unlet _0002<CR>:endif<CR>:if exists("_0003")<CR>:call matchdelete(_0003)<CR>:unlet _0003<CR>:endif<CR>:let _0001 = matchadd("WhiteSpace", '\s\+$')<CR>:let _0002 = matchadd("Tab", '\t')<CR>:let _0003 = matchadd("OverEighty", '\%>80v.\+')<CR><Esc>
@@ -82,19 +140,14 @@ nmap \cs <Esc>:let @*=expand("%")<CR><Esc>
 nmap \cl <Esc>:let @*=expand("%:p")<CR><Esc>
 
 " 'quote' a word
-nnoremap '' :silent! normal mpea'<Esc>bi'<Esc>`pl<Esc><Esc>
+" nnoremap '' :silent! normal mpea'<Esc>bi'<Esc>`pl<Esc><Esc>
+nnoremap '' :silent! normal mpbi'<Esc>ea'<Esc>`pl<Esc><Esc>
 " double "quote" a word
-nnoremap "" :silent! normal mpea"<Esc>bi"<Esc>`pl<Esc><Esc>
+nnoremap "" :silent! normal mpbi"<Esc>ea"<Esc>`pl<Esc><Esc>
 " remove quotes from a word
 nnoremap \rq :silent! normal mpeld bhd `ph<CR><Esc><Esc>
 " Alternate escape
 inoremap jj <ESC>
-
-" Map Ctrl+y and Ctrl+p to yank to, and paste from the system clip-board
-nnoremap <S-C-y> "+y
-vnoremap <S-C-y> "+y
-nnoremap <S-C-p> "+p
-vnoremap <S-C-p> "+p
 
 "colorscheme morning
 colorscheme desert
@@ -141,6 +194,8 @@ set cscopequickfix=s-,g-,t-,f-,i-,c-,d-,e-
 " Leader related convinience shortcuts
 let mapleader=" "
 "nnoremap <leader>q :q<CR>
+nnoremap <leader>g gt<Esc>
+nnoremap <leader>G gT<Esc>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
 nnoremap <leader>c :copen 20<CR>
@@ -148,3 +203,12 @@ nnoremap <leader>C :cclose<CR>
 nnoremap <leader><TAB> <C-w><C-w>
 nnoremap <leader>y :cd %:p:h<CR>
 nnoremap <leader>r :e<CR>
+nnoremap <leader>o :OverCommandLine<CR>
+
+" Map <leader> Ctrl+y and Ctrl+p to yank to, and paste from the system clip-board
+nnoremap <leader><C-y> "+y
+vnoremap <leader><C-y> "+y
+nnoremap <leader><C-p> "+p
+vnoremap <leader><C-p> "+p
+
+

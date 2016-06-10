@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z $1 ] || [ $(($1<1)) -eq 1 ]; then
-    echo "First arg must be 1 or greater."
+    echo "First arg must be 1 or greater. This is the number you wish to drop from the end of the stash."
     exit 1
 fi
 
