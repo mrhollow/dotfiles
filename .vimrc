@@ -1,7 +1,7 @@
 "set bg=light
 " Show line numbers
 set number
-set relativenumber
+" set relativenumber
 set ts=4
 set sw=4
 " Tabs expanded to spaces
@@ -9,7 +9,7 @@ set expandtab
 " How many tabs possible
 set tabpagemax=128
 " Set hidden buffers
-"set hidden
+set hidden
 " AutoIndent
 set ai
 " Highlight search
@@ -32,6 +32,8 @@ set colorcolumn=80
 set list lcs=tab:»\ ,trail:°
 " set no bell
 set noeb vb t_vb=
+" Enable status line
+" set laststatus=2
 
 " ========================
 set nocompatible              " be iMproved, required
@@ -46,6 +48,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" CommandT
+" Plugin 'wincent/command-t'
+
 " fuzzy search
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -55,6 +60,12 @@ Plugin 'easymotion/vim-easymotion'
 
 " Preview replace
 Plugin 'osyo-manga/vim-over'
+
+" Syntax checker
+Plugin 'scrooloose/syntastic'
+
+" Status bar
+" Plugin 'powerline/powerline'
 
 " "" " The following are examples of different formats supported.
 " "" " Keep Plugin commands between vundle#begin/end.
@@ -201,14 +212,18 @@ nnoremap <leader>s :split<CR>
 nnoremap <leader>c :copen 20<CR>
 nnoremap <leader>C :cclose<CR>
 nnoremap <leader><TAB> <C-w><C-w>
-nnoremap <leader>y :cd %:p:h<CR>
+"nnoremap <leader>y :cd %:p:h<CR>
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
 nnoremap <leader>r :e<CR>
 nnoremap <leader>o :OverCommandLine<CR>
 
 " Map <leader> Ctrl+y and Ctrl+p to yank to, and paste from the system clip-board
-nnoremap <leader><C-y> "+y
-vnoremap <leader><C-y> "+y
-nnoremap <leader><C-p> "+p
-vnoremap <leader><C-p> "+p
+" nnoremap <leader><C-y> "+y
+" vnoremap <leader><C-y> "+y
+" nnoremap <leader><C-p> "+p
+" vnoremap <leader><C-p> "+p
 
 
