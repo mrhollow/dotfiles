@@ -157,6 +157,9 @@ nnoremap '' :silent! normal mpbi'<Esc>ea'<Esc>`pl<Esc><Esc>
 nnoremap "" :silent! normal mpbi"<Esc>ea"<Esc>`pl<Esc><Esc>
 " remove quotes from a word
 nnoremap \rq :silent! normal mpeld bhd `ph<CR><Esc><Esc>
+" easy deal with buffers
+nnoremap gb :ls<CR>:b<Space>
+nnoremap gbd :ls<CR>:bd<Space>
 " Alternate escape
 inoremap jj <ESC>
 
