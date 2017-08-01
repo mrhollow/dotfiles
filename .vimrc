@@ -64,6 +64,9 @@ Plugin 'osyo-manga/vim-over'
 " Syntax checker
 Plugin 'scrooloose/syntastic'
 
+" Simple auto completion
+Plugin 'AutoComplPop'
+
 " Status bar
 " Plugin 'powerline/powerline'
 
