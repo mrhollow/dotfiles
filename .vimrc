@@ -225,6 +225,7 @@ nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 nnoremap <leader>r :e<CR>
 nnoremap <leader>o :OverCommandLine<CR>
+nnoremap <leader>t :FZF<CR>
 
 " Map <leader> Ctrl+y and Ctrl+p to yank to, and paste from the system clip-board
 " nnoremap <leader><C-y> "+y
