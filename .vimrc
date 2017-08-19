@@ -27,13 +27,18 @@ set wildmenu
 set backspace=indent,start
 " Highlight column
 set colorcolumn=80
+" highlight ColorColumn ctermbg=magenta
+" call matchadd('ColorColumn', '\%81v', 100)
 " Display tabs/space
 " Enter the middle-dot by pressing Ctrl-k then .M
+" See the digraphs by :digraphs
 set list lcs=tab:»\ ,trail:°
 " set no bell
 set noeb vb t_vb=
 " Enable status line
-" set laststatus=2
+set laststatus=2
+" append ** (this doesn't appear to do anything...)
+" set path+=**
 
 " ========================
 set nocompatible              " be iMproved, required
@@ -66,6 +71,12 @@ Plugin 'scrooloose/syntastic'
 
 " Simple auto completion
 Plugin 'AutoComplPop'
+
+" Status line enhancements
+Plugin 'itchyny/lightline.vim'
+
+" Vim ack-grep integration
+Plugin 'toranb/vim-ack'
 
 " Status bar
 " Plugin 'powerline/powerline'
@@ -150,8 +161,8 @@ map <C-k> <C-b>
 map <C-j> <C-f>
 
 " Copy the file name/full_path_to_file to the clipboard 
-nmap \cs <Esc>:let @*=expand("%")<CR><Esc>
-nmap \cl <Esc>:let @*=expand("%:p")<CR><Esc>
+" nmap \cs <Esc>:let @*=expand("%")<CR><Esc>
+" nmap \cl <Esc>:let @*=expand("%:p")<CR><Esc>
 
 " 'quote' a word
 " nnoremap '' :silent! normal mpea'<Esc>bi'<Esc>`pl<Esc><Esc>
@@ -159,15 +170,15 @@ nnoremap '' :silent! normal mpbi'<Esc>ea'<Esc>`pl<Esc><Esc>
 " double "quote" a word
 nnoremap "" :silent! normal mpbi"<Esc>ea"<Esc>`pl<Esc><Esc>
 " remove quotes from a word
-nnoremap \rq :silent! normal mpeld bhd `ph<CR><Esc><Esc>
+nnoremap <leader>rq :silent! normal mpeld bhd `ph<CR><Esc><Esc>
 " easy deal with buffers
 nnoremap gb :ls<CR>:b<Space>
 nnoremap gbd :ls<CR>:bd<Space>
 " Alternate escape
 inoremap jj <ESC>
 
-"colorscheme morning
-colorscheme desert
+colorscheme morning
+"colorscheme desert
 "colorscheme evening
 syntax enable
 
@@ -211,6 +222,7 @@ set cscopequickfix=s-,g-,t-,f-,i-,c-,d-,e-
 " Leader related convinience shortcuts
 let mapleader=" "
 "nnoremap <leader>q :q<CR>
+nnoremap <leader>a :Ack<Space>
 nnoremap <leader>g gt<Esc>
 nnoremap <leader>G gT<Esc>
 nnoremap <leader>v :vsplit<CR>
@@ -223,9 +235,16 @@ nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
+" copy file name into system buffer
+nnoremap <leader>yf <Esc>:let @*=expand("%")<CR><Esc>
+" copy full file path into system buffer
+nnoremap <leader>yp <Esc>:let @*=expand("%:p")<CR><Esc>
+nnoremap <leader>cd <Esc>:cd %:h<CR>:echo "Changed dir to:" expand("%:p:h")<CR>
 nnoremap <leader>r :e<CR>
 nnoremap <leader>o :OverCommandLine<CR>
 nnoremap <leader>t :FZF<CR>
+nnoremap <leader>f :find<Space>
+nnoremap <leader>/ /XXXXX<CR>
 
 " Map <leader> Ctrl+y and Ctrl+p to yank to, and paste from the system clip-board
 " nnoremap <leader><C-y> "+y
