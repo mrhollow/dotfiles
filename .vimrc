@@ -164,19 +164,6 @@ map <C-j> <C-f>
 " nmap \cs <Esc>:let @*=expand("%")<CR><Esc>
 " nmap \cl <Esc>:let @*=expand("%:p")<CR><Esc>
 
-" 'quote' a word
-" nnoremap '' :silent! normal mpea'<Esc>bi'<Esc>`pl<Esc><Esc>
-nnoremap '' :silent! normal mpbi'<Esc>ea'<Esc>`pl<Esc><Esc>
-" double "quote" a word
-nnoremap "" :silent! normal mpbi"<Esc>ea"<Esc>`pl<Esc><Esc>
-" remove quotes from a word
-nnoremap <leader>rq :silent! normal mpeld bhd `ph<CR><Esc><Esc>
-" easy deal with buffers
-nnoremap gb :ls<CR>:b<Space>
-nnoremap gbd :ls<CR>:bd<Space>
-" Alternate escape
-inoremap jj <ESC>
-
 colorscheme morning
 "colorscheme desert
 "colorscheme evening
@@ -221,8 +208,22 @@ set cscopequickfix=s-,g-,t-,f-,i-,c-,d-,e-
 
 " Leader related convinience shortcuts
 let mapleader=" "
+" 'quote' a word
+" nnoremap '' :silent! normal mpea'<Esc>bi'<Esc>`pl<Esc><Esc>
+nnoremap '' :silent! normal mpbi'<Esc>ea'<Esc>`pl<Esc><Esc>
+" double "quote" a word
+nnoremap "" :silent! normal mpbi"<Esc>ea"<Esc>`pl<Esc><Esc>
+" remove quotes from a word
+nnoremap <leader>rq :silent! normal mpeld bhd `ph<CR><Esc><Esc>
+" easy deal with buffers
+nnoremap gb :ls<CR>:b<Space>
+nnoremap gbd :ls<CR>:bd<Space>
+" Alternate escape
+inoremap jj <ESC>
 "nnoremap <leader>q :q<CR>
 nnoremap <leader>a :Ack<Space>
+" yank word under cursor, and ack grep for it
+nnoremap <leader>aa yiw :Ack<Space><C-r>"
 nnoremap <leader>g gt<Esc>
 nnoremap <leader>G gT<Esc>
 nnoremap <leader>v :vsplit<CR>
@@ -239,6 +240,9 @@ vnoremap <leader>p "+p
 nnoremap <leader>yf <Esc>:let @*=expand("%")<CR><Esc>
 " copy full file path into system buffer
 nnoremap <leader>yp <Esc>:let @*=expand("%:p")<CR><Esc>
+nnoremap mf :move +1<CR>
+nnoremap mb :move -2<CR>
+nnoremap <leader>m :move<Space>
 nnoremap <leader>cd <Esc>:cd %:h<CR>:echo "Changed dir to:" expand("%:p:h")<CR>
 nnoremap <leader>r :e<CR>
 nnoremap <leader>o :OverCommandLine<CR>
