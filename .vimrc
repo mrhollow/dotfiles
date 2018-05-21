@@ -78,6 +78,9 @@ Plugin 'itchyny/lightline.vim'
 " Vim ack-grep integration
 Plugin 'toranb/vim-ack'
 
+" Rust integration
+Plugin 'rust-lang/rust.vim'
+
 " Status bar
 " Plugin 'powerline/powerline'
 
@@ -228,6 +231,22 @@ nnoremap <leader>g gt<Esc>
 nnoremap <leader>G gT<Esc>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
+" c: Find functions calling this function
+" d: Find functions called by this function
+" e: Find this egrep pattern
+" f: Find this file
+" g: Find this definition
+" i: Find files #including this file
+" s: Find this C symbol
+" t: Find this text string
+nnoremap <leader>csc yiw<CR>:cs find c <C-r>"<CR>
+nnoremap <leader>csd yiw<CR>:cs find d <C-r>"<CR>
+nnoremap <leader>cse yiw<CR>:cs find e <C-r>"<CR>
+nnoremap <leader>csf yiw<CR>:cs find f <C-r>"<CR>
+nnoremap <leader>csg yiw<CR>:cs find g <C-r>"<CR>
+nnoremap <leader>csi yiw<CR>:cs find i <C-r>"<CR>
+nnoremap <leader>css yiw<CR>:cs find s <C-r>"<CR>
+nnoremap <leader>cst yiw<CR>:cs find t <C-r>"<CR>
 nnoremap <leader>c :copen 20<CR>
 nnoremap <leader>C :cclose<CR>
 nnoremap <leader><TAB> <C-w><C-w>
@@ -240,15 +259,24 @@ vnoremap <leader>p "+p
 nnoremap <leader>yf <Esc>:let @*=expand("%")<CR><Esc>
 " copy full file path into system buffer
 nnoremap <leader>yp <Esc>:let @*=expand("%:p")<CR><Esc>
+" quit all
+nnoremap <leader>qa <Esc>:qa<CR>
 nnoremap mf :move +1<CR>
+nnoremap mj :move +1<CR>
 nnoremap mb :move -2<CR>
+nnoremap mk :move -2<CR>
 nnoremap <leader>m :move<Space>
+vnoremap <leader>n :norm<Space>
 nnoremap <leader>cd <Esc>:cd %:h<CR>:echo "Changed dir to:" expand("%:p:h")<CR>
 nnoremap <leader>r :e<CR>
 nnoremap <leader>o :OverCommandLine<CR>
 nnoremap <leader>t :FZF<CR>
 nnoremap <leader>f :find<Space>
 nnoremap <leader>/ /XXXXX<CR>
+nnoremap <leader>j <C-w><C-j><CR>
+nnoremap <leader>k <C-w><C-k><CR>
+nnoremap <leader>h <C-w><C-h><CR>
+nnoremap <leader>l <C-w><C-l><CR>
 
 " Map <leader> Ctrl+y and Ctrl+p to yank to, and paste from the system clip-board
 " nnoremap <leader><C-y> "+y
