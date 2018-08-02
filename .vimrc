@@ -73,7 +73,13 @@ Plugin 'scrooloose/syntastic'
 Plugin 'AutoComplPop'
 
 " Status line enhancements
-Plugin 'itchyny/lightline.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'itchyny/lightline.vim'
+"Plugin 'edkolev/tmuxline.vim'
+
+" Git
+Plugin 'tpope/vim-fugitive'
 
 " Vim ack-grep integration
 Plugin 'toranb/vim-ack'
@@ -83,6 +89,9 @@ Plugin 'rust-lang/rust.vim'
 
 " Status bar
 " Plugin 'powerline/powerline'
+
+" Undo
+Plugin 'mbbill/undotree'
 
 " "" " The following are examples of different formats supported.
 " "" " Keep Plugin commands between vundle#begin/end.
@@ -123,8 +132,10 @@ filetype plugin indent on    " required
 " Unmatch
 " map <F3> <Esc>:call matchdelete(_0001)<CR>:unlet _0001<CR>:call matchdelete(_0002)<CR>:unlet _0002<CR>:call matchdelete(_0003)<CR>:unlet _0003<CR><Esc>
 
-map <F2> <Esc>:tabnew %<CR>gT <C-o>gt
+" map <F2> <Esc>:tabnew %<CR>gT <C-o>gt
+map <F2> <Esc>:UndotreeToggle<CR>
 map <F3> <Esc>:set syntax=c<CR>
+
 
 " Load session, "cp -b ~/.gvim_sess.backup ~/.gvim_sess" if you meant to
 " hit <F5>
@@ -260,7 +271,7 @@ nnoremap <leader>yf <Esc>:let @*=expand("%")<CR><Esc>
 " copy full file path into system buffer
 nnoremap <leader>yp <Esc>:let @*=expand("%:p")<CR><Esc>
 " quit all
-nnoremap <leader>qa <Esc>:qa<CR>
+nnoremap <leader>qa <Esc>:qa!<CR>
 nnoremap mf :move +1<CR>
 nnoremap mj :move +1<CR>
 nnoremap mb :move -2<CR>
@@ -273,10 +284,10 @@ nnoremap <leader>o :OverCommandLine<CR>
 nnoremap <leader>t :FZF<CR>
 nnoremap <leader>f :find<Space>
 nnoremap <leader>/ /XXXXX<CR>
-nnoremap <leader>j <C-w><C-j><CR>
-nnoremap <leader>k <C-w><C-k><CR>
-nnoremap <leader>h <C-w><C-h><CR>
-nnoremap <leader>l <C-w><C-l><CR>
+nnoremap <leader>j <C-w>j<CR>
+nnoremap <leader>k <C-w>k<CR>
+nnoremap <leader>h <C-w>h<CR>
+nnoremap <leader>l <C-w>l<CR>
 
 " Map <leader> Ctrl+y and Ctrl+p to yank to, and paste from the system clip-board
 " nnoremap <leader><C-y> "+y
@@ -284,4 +295,5 @@ nnoremap <leader>l <C-w><C-l><CR>
 " nnoremap <leader><C-p> "+p
 " vnoremap <leader><C-p> "+p
 
-
+"let airline_section_b = '%{strftime("%c")}'
+"let airline_section_y = 'BN: %{bufnr("%")}'
