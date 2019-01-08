@@ -249,8 +249,10 @@ nnoremap mb :move -2<CR>
 nnoremap mk :move -2<CR>
 nnoremap <leader>- :move -2<CR>
 
+" Maximize/minimize panes
 nnoremap <leader>m <C-w>_ <C-w>\|
 nnoremap <leader>M <C-w>=
+
 vnoremap <leader>n :norm<Space>
 nnoremap <leader>cd <Esc>:cd %:h<CR>:echo "Changed dir to:" expand("%:p:h")<CR>
 nnoremap <leader>r :cs add cscope.out<CR>:source ~/.vimrc<CR>:e<CR>
@@ -266,10 +268,15 @@ nnoremap <leader>l <C-w>l<CR>
 " work... hmmm...
 nnoremap <leader>gf <Esc>:cd %:h<CR>:cd ..<CR>gf
 
+" vimrc editing + save all
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>wa :bufdo :w<CR>
 nnoremap <leader>ra :bufdo :e<CR>
 nnoremap <leader>rv :source $MYVIMRC<CR>:echo ".vimrc reloaded"<CR>
+
+" Open old files in a separate browseable window; can't figure out how to make
+" a shortcut to this, it keeps reading in...
+" :new +setl\ buftype=nofile | 0put =v:oldfiles | nnoremap <buffer> <CR> :e <C-r>=getline('.')<CR><CR>
 
 "let airline_section_b = '%{strftime("%c")}'
 "let airline_section_y = 'BN: %{bufnr("%")}'
