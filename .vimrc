@@ -38,6 +38,8 @@ set list lcs=tab:»\ ,trail:°
 set noeb vb t_vb=
 " Enable status line
 set laststatus=2
+" Force N lines above/below the cursor
+set scrolloff=5
 
 " ========================
 set nocompatible              " be iMproved, required
@@ -79,6 +81,10 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " Git
 Plugin 'tpope/vim-fugitive'
+" Shortcut file operations
+Plugin 'tpope/vim-eunuch'
+" Shortcut dir operations
+Plugin 'tpope/vim-vinegar'
 
 " Vim ack-grep integration
 Plugin 'toranb/vim-ack'
@@ -198,6 +204,7 @@ nnoremap <leader>rq :silent! normal mpeld bhd `ph<CR><Esc><Esc>
 " easy deal with buffers
 nnoremap gb :ls<CR>:b<Space>
 nnoremap gbd :ls<CR>:bd<Space>
+nnoremap gbw :ls<CR>:bw<Space>
 " Alternate escape
 inoremap jj <ESC>
 "nnoremap <leader>q :q<CR>
@@ -282,3 +289,9 @@ nnoremap <leader>rv :source $MYVIMRC<CR>:echo ".vimrc reloaded"<CR>
 "let airline_section_y = 'BN: %{bufnr("%")}'
 "
 "hi Visual term=reverse cterm=reverse guibg=Grey
+
+" open old files list and map enter to open line
+" vertical split
+noremap <leader>vv :vnew +setl\ buftype=nofile <bar> 0put =v:oldfiles <bar> nnoremap <lt>buffer> <lt>CR> :e <lt>C-r>=getline('.')<lt>CR><lt>CR><CR><CR>
+" in new tab
+noremap <leader>vt :tabnew +setl\ buftype=nofile <bar> 0put =v:oldfiles <bar> nnoremap <lt>buffer> <lt>CR> :e <lt>C-r>=getline('.')<lt>CR><lt>CR <CR><CR>
