@@ -69,6 +69,8 @@ Plugin 'osyo-manga/vim-over'
 
 " Syntax checker
 Plugin 'scrooloose/syntastic'
+" Visual browsing
+Plugin 'scrooloose/nerdtree'
 
 " Simple auto completion
 Plugin 'AutoComplPop'
@@ -189,6 +191,9 @@ set cscopequickfix=s-,g-,t-,f-,i-,c-,d-,e-
 " Leader related convenience shortcuts
 let mapleader=" "
 
+" `quote` a word
+nnoremap `` diw<Esc>i``<Esc>hpb<Esc>
+nnoremap <leader>`` I`<Esc>A`<Esc>I<Esc>
 " 'quote' a word
 " nnoremap '' :silent! normal mpea'<Esc>bi'<Esc>`pl<Esc><Esc>
 "nnoremap '' :silent! normal mpbi'<Esc>ea'<Esc>`pl<Esc><Esc>
@@ -243,9 +248,9 @@ vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 " copy file name into system buffer
-nnoremap <leader>yf <Esc>:let @*=expand("%")<CR><Esc>
+nnoremap <leader>yf <Esc>:let @+=expand("%")<CR><Esc>
 " copy full file path into system buffer
-nnoremap <leader>yp <Esc>:let @*=expand("%:p")<CR><Esc>
+nnoremap <leader>yp <Esc>:let @+=expand("%:p")<CR><Esc>
 " quit all
 nnoremap <leader>qa <Esc>:qa!<CR>
 
